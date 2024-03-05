@@ -25,11 +25,44 @@
               <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="introduce tu contraseña">
             </div>
             <div class="d-grid gap-2">
-              <button class="btn btn-success" type="button">Iniciar Sesión</button>
+            <button class="btn btn-success" type="button">Iniciar Sesión</button>
+            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
             </div>
           </div>
         </div>
         <div class="col bg-success" style="height: 100vh;">
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Registrarse</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="recipient-name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="col-form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="direccion" class="col-form-label">Direccion:</label>
+                <input type="text" class="form-control" id="direccion">
+              </div>
+              <div class="mb-3">
+                <label for="pass" class="col-form-label">Contraseña:</label>
+                <input type="password" class="form-control" id="pass" required>
+              </div>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <input type="submit" class="btn btn-success" value="Guardar">
+            </form>
+          </div>
         </div>
       </div>
     </div>
