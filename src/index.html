@@ -1,71 +1,175 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Iniciar Sesion | Bloom Dessert's</title>
   </head>
   <body>
-   
     <div class="container-fluid">
-      <div class="row">
-        <div class="col d-flex align-items-center flex-column justify-content-center">
-          <div class="w-50">
-              <img id="logo" class="mx-auto d-block mb-3" src="img/logo.png" alt="" style="width: 200px;">
-            <h1 class="text-center">Iniciar Sesión</h1>
-            <p class="text-center">
-              Bienvenido</p>
-            <form action=""></form>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
-            </div>
-            <div class="mb-3">
-              <label for="inputPassword5" class="form-label">Password</label>
-              <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="introduce tu contraseña">
-            </div>
-            <div class="d-grid gap-2">
-            <button class="btn btn-success" type="button">Iniciar Sesión</button>
-            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
-            </div>
-          </div>
-        </div>
-        <div class="col bg-success" style="height: 100vh;">
+      <!-- TOAST -->
+      <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div
+          id="liveToast"
+          class="toast hide"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div class="toast-body">El usuario fue registrado correctamente</div>
         </div>
       </div>
+      <!-- END TOAST -->
+      <div class="row">
+        <div
+          class="col d-flex align-items-center flex-column justify-content-center"
+        >
+          <div class="w-50">
+            <img
+              id="logo"
+              class="mx-auto d-block mb-3"
+              src="img/logo.png"
+              alt=""
+              style="width: 200px"
+            />
+            <h1 class="text-center">Iniciar Sesión</h1>
+            <p class="text-center">Bienvenido</p>
+            <form id="session_form" novalidate>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="session_mail"
+                  placeholder="nombre@ejemplo.com"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="inputPassword5" class="form-label">Password</label>
+                <input
+                  type="password"
+                  id="session_pass"
+                  class="form-control"
+                  aria-describedby="passwordHelpBlock"
+                  placeholder="introduce tu contraseña"
+                />
+              </div>
+              <div class="d-grid gap-2">
+                <button class="btn btn-success" type="submit" id="btnLogin">
+                  <span
+                    class="spinner-border spinner-border-sm d-none"
+                    role="status"
+                    aria-hidden="true"
+                    id="session_spinner"
+                  ></span>
+                  Iniciar Sesión
+                </button>
+                <button
+                  class="btn btn-success"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#registerModal"
+                >
+                  Registrarse
+                </button>
+              </div>
+            </form>
+            <div
+              class="alert mt-3 d-none"
+              role="alert"
+              id="session_alert"
+            ></div>
+          </div>
+        </div>
+        <div class="col bg-success" style="height: 100vh"></div>
+      </div>
     </div>
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="registerModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Registrarse</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="register_form">
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="recipient-name" required>
+                <label for="register_name" class="col-form-label"
+                  >Nombre:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="register_name"
+                  required
+                />
               </div>
               <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
+                <label for="register_mail" class="col-form-label">Email:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="register_mail"
+                  required
+                />
               </div>
               <div class="mb-3">
-                <label for="direccion" class="col-form-label">Direccion:</label>
-                <input type="text" class="form-control" id="direccion">
+                <label for="register_address" class="col-form-label"
+                  >Direccion:</label
+                >
+                <input type="text" class="form-control" id="register_address" />
               </div>
               <div class="mb-3">
-                <label for="pass" class="col-form-label">Contraseña:</label>
-                <input type="password" class="form-control" id="pass" required>
+                <label for="register_pass" class="col-form-label"
+                  >Contraseña:</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="register_pass"
+                  required
+                />
               </div>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <input type="submit" class="btn btn-success" value="Guardar">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cerrar
+              </button>
+              <button class="btn btn-success">
+                <span
+                  class="spinner-border spinner-border-sm d-none"
+                  role="status"
+                  aria-hidden="true"
+                  id="register_spinner"
+                ></span>
+                Guardar
+              </button>
             </form>
+            <div
+              class="alert mt-3 d-none"
+              role="alert"
+              id="register_alert"
+            ></div>
           </div>
         </div>
       </div>
     </div>
-    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
